@@ -1,3 +1,1 @@
 require("frosty")
-print("hello")
-
