@@ -1,6 +1,7 @@
 require("frosty.remap")
 require("frosty.set")
 require("frosty.lazy_init")
+require("frosty.godot_init")
 
 local augroup = vim.api.nvim_create_augroup
 local FrostyGroup = augroup('Frosty', {})

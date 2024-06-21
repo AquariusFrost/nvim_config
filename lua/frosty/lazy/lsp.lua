@@ -30,7 +30,6 @@ return {
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
@@ -42,7 +41,7 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
-				    runtime = { version = "Lua 5.1" },
+                                runtime = { version = "Lua 5.1" },
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
                                 }
@@ -51,6 +50,11 @@ return {
                     }
                 end,
             }
+        })
+
+        require("lspconfig")["gdscript"].setup({
+            name = "godot",
+            cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
