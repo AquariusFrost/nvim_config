@@ -79,13 +79,6 @@ vim.keymap.set("n", "<leader>s",
 -- <leader>x makes the current file executable (chmod +x)
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- <leader>ee inserts Go-style error handling boilerplate
-vim.keymap.set(
-    "n",
-    "<leader>ee",
-    "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
-)
-
 -- <leader><leader> reloads (sources) the current file
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
