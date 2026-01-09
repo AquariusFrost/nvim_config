@@ -54,7 +54,7 @@ return {
 
         require("lspconfig")["gdscript"].setup({
             name = "godot",
-            cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
+            cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
