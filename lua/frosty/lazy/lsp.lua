@@ -27,17 +27,22 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
+				"ts_ls",
+				"cssls",
+				"html",
+				"omnisharp",
+				"pyright",
+				"jdtls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
+					vim.lsp.config(server_name, {
                         capabilities = capabilities
-                    }
+                    })
                 end,
 
                 ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
+					vim.lsp.config("lua_ls", {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
@@ -47,12 +52,12 @@ return {
                                 }
                             }
                         }
-                    }
+                    })
                 end,
             }
         })
 
-        require("lspconfig")["gdscript"].setup({
+		vim.lsp.config("gdscript", {
             name = "godot",
             cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
         })
