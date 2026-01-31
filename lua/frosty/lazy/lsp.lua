@@ -35,14 +35,16 @@ return {
 				"jdtls"
             },
             handlers = {
-                function(server_name) -- default handler (optional)
-					vim.lsp.config(server_name, {
+                -- Default handler for all servers
+                function(server_name)
+                    require('lspconfig')[server_name].setup{
                         capabilities = capabilities
-                    })
+                    }
                 end,
 
+                -- Custom handler for lua_ls
                 ["lua_ls"] = function()
-					vim.lsp.config("lua_ls", {
+                    require('lspconfig').lua_ls.setup{
                         capabilities = capabilities,
                         settings = {
                             Lua = {
@@ -52,7 +54,15 @@ return {
                                 }
                             }
                         }
-                    })
+                    }
+                end,
+
+                -- Custom handler for Omnisharp, tweak if you have special needs
+                ["omnisharp"] = function()
+                    require('lspconfig').omnisharp.setup{
+                        capabilities = capabilities
+                        -- You can add extra Omnisharp config options here if needed
+                    }
                 end,
             }
         })
