@@ -23,14 +23,17 @@ return {
             cmp_lsp.default_capabilities())
 
         require("fidget").setup({})
-        require("mason").setup()
+        require("mason").setup({
+			registries = {
+ 				"github:mason-org/mason-registry",
+    			"github:Crashdummyy/mason-registry",  -- Roslyn package
+			}
+		})
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "lua_ls",
 				"ts_ls",
 				"cssls",
 				"html",
-				"omnisharp",
 				"pyright",
 				"jdtls"
             },
@@ -48,21 +51,25 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
-                                runtime = { version = "Lua 5.1" },
+                                runtime = {
+									version = "LuaJIT"
+								},
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
+								},
+								workspace = {
+									library = {
+										vim.env.VIMRUNTIME,
+										vim.fn.stdpath("config")
+									},
+									checkThirdParty = false
+									},
+									telemetry = {
+										enable = false
+									}
                                 }
                             }
                         }
-                    }
-                end,
-
-                -- Custom handler for Omnisharp, tweak if you have special needs
-                ["omnisharp"] = function()
-                    require('lspconfig').omnisharp.setup{
-                        capabilities = capabilities
-                        -- You can add extra Omnisharp config options here if needed
-                    }
                 end,
             }
         })
