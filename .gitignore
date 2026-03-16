@@ -1,0 +1,26 @@
+# Neovim runtime directories (platform-specific data)
+plugin/
+data/
+
+# Undo history files (may contain sensitive code)
+undodir/
+
+# Environment files and secrets
+.env
+.env.*
+*.secret
+*.key
+*.pem
+credentials.*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Personal notes or temporary files
+notes.txt
+scratch.*
+TODO.local
+
+# LSP/DAP logs (may contain file paths)
+*.log

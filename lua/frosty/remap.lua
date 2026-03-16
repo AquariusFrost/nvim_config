@@ -25,16 +25,6 @@ vim.keymap.set("n", "n", "nzzzv")
 -- When searching backward (N), keep result centered and unfolded
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Start Vim-With-Me collaborative session
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-
--- Stop Vim-With-Me collaborative session
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
-
 -- In visual mode, paste over selection without overwriting clipboard
 vim.keymap.set("x", "<leader>p", [["_dP]])
 

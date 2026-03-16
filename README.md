@@ -153,10 +153,10 @@ Press `<leader>po` to open the **project picker** (cross-platform replacement fo
 2. **Clone this repository:**
    ```bash
    # Linux/macOS
-   git clone <your-repo-url> ~/.config/nvim
+   git clone https://github.com/AquariusFrost/nvim_config.git ~/.config/nvim
    
    # Windows (PowerShell)
-   git clone <your-repo-url> $env:LOCALAPPDATA\nvim
+   git clone https://github.com/AquariusFrost/nvim_config.git $env:LOCALAPPDATA\nvim
    ```
 
 3. **Install platform dependencies** (see above)
@@ -250,6 +250,21 @@ git --version
 ## Contributing
 
 Contributions welcome! Please ensure any changes maintain cross-platform compatibility.
+
+---
+
+## Contributing
+
+Contributions welcome! Please ensure any changes maintain cross-platform compatibility (Linux, Windows, macOS).
+
+---
+
+## Security
+
+This config includes:
+- **cloak.nvim** - Automatically hides secrets in `.env` files
+- **Never commit `.env` files** - They're in `.gitignore` for safety
+- **Cross-platform path handling** - No hardcoded usernames or system paths
 
 ---
 
