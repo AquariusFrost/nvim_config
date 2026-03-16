@@ -46,6 +46,9 @@ vim.keymap.set("n", "Q", "<nop>")
 -- <leader>f formats current buffer using LSP
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
+-- <leader>fe fixes all ESLint issues in current buffer
+vim.keymap.set("n", "<leader>fe", ":EslintFixAll<CR>", { desc = "Fix ESLint issues" })
+
 -- Ctrl-k jumps to next quickfix entry and centers
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 

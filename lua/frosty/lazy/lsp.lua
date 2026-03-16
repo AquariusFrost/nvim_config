@@ -50,7 +50,8 @@ return {
 				"pyright",
 				"jdtls",
 				"tailwindcss",
-				"vue_ls"
+				"vue_ls",
+				"eslint"  -- React Hooks validation, Vue/JS/TS linting
 			},
 			automatic_enable = true,
 		})
@@ -83,17 +84,19 @@ return {
 			filetypes = { "vue" }
 		})
 
+		-- vtsls provides TypeScript language server with native React support
+		-- JSX/TSX works out-of-the-box (no plugin needed, unlike Vue)
 		vim.lsp.config("vtsls", {
 
 			capabilities = capabilities,
 			filetypes = {
 				"javascript",
-				"javascriptreact",
+				"javascriptreact",     -- React .jsx files
 				"javascript.jsx",
 				"typescript",
-				"typescriptreact",
+				"typescriptreact",     -- React .tsx files (TypeScript + JSX)
 				"typescript.tsx",
-				"vue",
+				"vue",                 -- Vue.js (via @vue/typescript-plugin)
 			},
 			settings = {
 				vtsls = {
@@ -120,6 +123,48 @@ return {
 			},
 		})
 		vim.lsp.enable("tailwindcss")
+
+		-- ESLint LSP for React Hooks validation and linting
+		-- Prettier handles formatting (via conform.nvim), ESLint handles code quality
+		-- eslint-config-prettier disables conflicting ESLint formatting rules
+		vim.lsp.config("eslint", {
+			capabilities = capabilities,
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"vue",
+			},
+			settings = {
+				format = false,  -- Prettier handles formatting, not ESLint
+				run = "onType",
+			},
+		})
+		vim.lsp.enable("eslint")
+
+		-- Manual ESLint fix command (no auto-fix on save)
+		vim.api.nvim_create_user_command("EslintFixAll", function()
+			local bufnr = vim.api.nvim_get_current_buf()
+			local eslint_client = vim.lsp.get_clients({ bufnr = bufnr, name = "eslint" })[1]
+			
+			if not eslint_client then
+				vim.notify("ESLint LSP not attached to this buffer", vim.log.levels.WARN)
+				return
+			end
+			
+			eslint_client.request_sync("workspace/executeCommand", {
+				command = "eslint.applyAllFixes",
+				arguments = {
+					{
+						uri = vim.uri_from_bufnr(bufnr),
+						version = vim.lsp.util.buf_versions[bufnr],
+					},
+				},
+			}, nil, bufnr)
+			
+			vim.notify("ESLint fixes applied", vim.log.levels.INFO)
+		end, { desc = "Fix all ESLint problems for current buffer" })
 
 		vim.lsp.config("gdscript", {
 			name = "godot",
