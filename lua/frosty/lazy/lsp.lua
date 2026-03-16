@@ -29,8 +29,19 @@ return {
 				"github:Crashdummyy/mason-registry", -- Roslyn package
 			}
 		})
-		local vue_path = vim.fn.expand("$MASON/packages/vue-language-server")
-			.. "/node_modules/@vue/language-server"
+		
+		-- Get Vue language server path (cross-platform)
+		-- Mason installs to stdpath("data")/mason on all platforms
+		local mason_path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason")
+		local vue_path = vim.fs.joinpath(
+			mason_path,
+			"packages",
+			"vue-language-server",
+			"node_modules",
+			"@vue",
+			"language-server"
+		)
+		
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"vtsls",

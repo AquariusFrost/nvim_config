@@ -53,9 +53,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- Disable Ex mode (Q) so you don't accidentally enter it
 vim.keymap.set("n", "Q", "<nop>")
 
--- Ctrl-f opens tmux-sessionizer in a new tmux window
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
 -- <leader>f formats current buffer using LSP
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
@@ -75,9 +72,6 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
 )
-
--- <leader>x makes the current file executable (chmod +x)
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- <leader><leader> reloads (sources) the current file
 vim.keymap.set("n", "<leader><leader>", function()
