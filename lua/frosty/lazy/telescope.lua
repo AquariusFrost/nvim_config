@@ -45,10 +45,10 @@ return {
 		vim.keymap.set('n', '<leader>vh', builtin.help_tags, { desc = "Help tags" })
 		
 		-- Project picker (cross-platform replacement for tmux-sessionizer)
-		vim.keymap.set('n', '<leader>pp', function()
+		vim.keymap.set('n', '<leader>po', function()
 			telescope.extensions.project.project({
 				display_type = 'full'  -- Show full path for clarity
 			})
-		end, { desc = "Pick project" })
+		end, { desc = "Open project" })
 	end
 }

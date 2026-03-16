@@ -94,7 +94,7 @@ Persistent undo files stored in Neovim's data directory:
 - **macOS:** `~/Library/Application Support/nvim/undodir/`
 
 ### Project Navigation
-Press `<leader>pp` to open the **project picker** (cross-platform replacement for tmux-sessionizer):
+Press `<leader>po` to open the **project picker** (cross-platform replacement for tmux-sessionizer):
 - Automatically detects Git repositories as projects
 - Maintains recently-opened project history
 - Quick switching between different codebases
@@ -105,7 +105,7 @@ Press `<leader>pp` to open the **project picker** (cross-platform replacement fo
 ## Key Bindings
 
 ### Project Management
-- `<leader>pp` - **Pick project** (Telescope project picker)
+- `<leader>po` - **Open project** (Telescope project picker)
 - `<leader>pf` - **Find files** in current project
 - `<leader>ps` - **Project search** (grep in files)
 - `<leader>pv` - **Project view** (netrw file explorer)
@@ -113,6 +113,20 @@ Press `<leader>pp` to open the **project picker** (cross-platform replacement fo
 ### Telescope (Fuzzy Finding)
 - `<C-p>` - Git files
 - `<leader>vh` - Help tags
+
+### Terminal Management
+- `<C-\>` - **Toggle floating terminal** (quick overlay)
+- `<leader>t1` - **Toggle terminal 1** (persistent horizontal split)
+- `<leader>t2` - **Toggle terminal 2** (persistent horizontal split)
+- `<leader>t3` - **Toggle terminal 3** (persistent horizontal split)
+- `<leader>tf` - **Toggle floating terminal** (alternative to `<C-\>`)
+- `<Esc>` - Exit terminal mode to normal mode (when in terminal)
+
+**Common workflow:**
+- Terminal 1: Dev server (e.g., `npm run dev`)
+- Terminal 2: Test watcher (e.g., `npm test --watch`)
+- Terminal 3: General commands (git, builds, etc.)
+- Float terminal: Quick one-off commands
 
 ### Clipboard (System Integration)
 - `<leader>y` - Copy to system clipboard (visual/normal)
