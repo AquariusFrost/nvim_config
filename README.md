@@ -60,13 +60,34 @@ sudo dnf install wl-clipboard
 
 ### Windows
 
-**No additional dependencies required!**
-- Clipboard works out of the box (Win32 API)
-- All core features work natively
+**Required for Treesitter parser compilation:**
+- **Zig compiler** - Required to compile Treesitter parsers (replaces Visual Studio requirement)
+  - **Recommended:** Install via [Scoop](https://scoop.sh/) package manager:
+    ```powershell
+    scoop install zig
+    ```
+  - **Alternative:** Chocolatey: `choco install zig`
+  - **Manual:** Download from https://ziglang.org/download/ and add to PATH
+  - **Verify installation:** Open new terminal and run `zig version`
 
-**Optional:**
-- Install Ripgrep via Chocolatey: `choco install ripgrep`
-- Or download from: https://github.com/BurntSushi/ripgrep/releases
+**Required for Python-based LSP servers:**
+- **Python 3** - Required for language servers (pyright, etc.) and some plugins
+  - **Recommended:** Download from https://www.python.org/downloads/
+  - **IMPORTANT:** Check "Add Python to PATH" during installation
+  - **Install pynvim:** After Python is installed, run:
+    ```powershell
+    python -m pip install --user pynvim
+    ```
+  - **Verify installation:** `py --version` or `python --version` in terminal
+
+**Clipboard Support:**
+- ✅ Works out of the box (Win32 API) - no additional tools needed
+
+**Optional (Recommended):**
+- **Ripgrep** - Significantly improves Telescope grep performance
+  - Scoop: `scoop install ripgrep`
+  - Chocolatey: `choco install ripgrep`
+  - Manual: https://github.com/BurntSushi/ripgrep/releases
 
 ### macOS
 
@@ -171,10 +192,32 @@ Press `<leader>po` to open the **project picker** (cross-platform replacement fo
    
 5. **Wait for lazy.nvim** to install all plugins automatically
 
-6. **Run health check:**
+6. **Windows users: Install additional dependencies**
+   
+   Open a new PowerShell window and install required tools:
+   
+   ```powershell
+   # Install Zig compiler (required for Treesitter parser compilation)
+   scoop install zig
+   # If you don't have Scoop, install it first: https://scoop.sh/
+   # Alternative: choco install zig (if using Chocolatey)
+   
+   # Install pynvim (required for Python provider)
+   python -m pip install --user pynvim
+   ```
+   
+   After installation, restart Neovim to apply changes.
+
+7. **Run health check:**
    ```vim
    :checkhealth
    ```
+   
+   **Important checks for Windows users:**
+   - `:checkhealth provider` - Verify Python 3 is detected
+   - `:checkhealth nvim-treesitter` - Verify Zig compiler is found
+   
+   If either check fails, see the Troubleshooting section below.
 
 ---
 
@@ -246,6 +289,128 @@ git --version
 
 # Verify undodir is set correctly
 :set undodir?
+```
+
+### Treesitter parser compilation fails (Windows)
+
+**Error:** `stdio.h: No such file or directory` or compilation errors when running `:TSInstall`
+
+**Root cause:** No C compiler found or compiler not configured properly
+
+**Solution:**
+
+1. **Install Zig compiler** (recommended approach):
+   ```powershell
+   # Using Scoop (recommended)
+   scoop install zig
+   
+   # OR using Chocolatey
+   choco install zig
+   ```
+
+2. **Verify Zig is in PATH:**
+   ```powershell
+   # Open a NEW terminal window (important!)
+   zig version
+   ```
+   
+   Should output: `0.xx.x` or similar
+
+3. **Restart Neovim and test parser installation:**
+   ```vim
+   nvim
+   :checkhealth nvim-treesitter
+   ```
+   
+   Should show: `OK zig: ... (zig 0.xx.x)`
+
+4. **Install a parser to verify:**
+   ```vim
+   :TSInstall lua
+   ```
+   
+   Should compile without errors
+
+**Alternative (if you have Visual Studio installed):**
+- Open "Developer Command Prompt for VS" (not regular PowerShell/cmd)
+- Launch Neovim from that prompt: `nvim`
+- **Note:** This requires always launching Neovim from the VS Developer prompt
+
+**If Zig installation fails:**
+- Ensure you have Administrator access (Scoop/Chocolatey may require it)
+- Try manual installation: https://ziglang.org/download/
+- Extract the zip file and add the directory to your PATH environment variable
+
+### Python provider not working (Windows)
+
+**Check status:**
+```vim
+:checkhealth provider
+```
+
+**If Python not found:**
+
+1. **Install Python** (if not already installed):
+   - Download from: https://www.python.org/downloads/
+   - **CRITICAL:** Check "Add Python to PATH" during installation
+   - Restart your terminal after installation
+
+2. **Install pynvim:**
+   ```powershell
+   # Try all three commands (one should work):
+   py -m pip install --user pynvim
+   python -m pip install --user pynvim
+   python3 -m pip install --user pynvim
+   ```
+
+3. **Verify Python is accessible:**
+   ```powershell
+   # Try each command - at least one should work:
+   py --version
+   python --version
+   python3 --version
+   ```
+
+4. **Restart Neovim and check health:**
+   ```vim
+   nvim
+   :checkhealth provider
+   ```
+   
+   Should show: `OK Python 3 provider: ... (python 3.xx.x)`
+
+**If still not working (manual PATH setup):**
+
+1. Find your Python installation directory:
+   ```powershell
+   # Windows search for "python.exe" or check:
+   C:\Users\YourName\AppData\Local\Programs\Python\Python312\
+   # or (Windows Store Python):
+   C:\Users\YourName\AppData\Local\Microsoft\WindowsApps\
+   ```
+
+2. Add Python to PATH:
+   - Press `Win + R`, type `sysdm.cpl`, press Enter
+   - Go to "Advanced" tab → "Environment Variables"
+   - Under "User variables", select "Path" → "Edit"
+   - Click "New" and add your Python directory
+   - Click "OK" on all dialogs
+   - **Restart your terminal and Neovim**
+
+3. Verify again:
+   ```powershell
+   # Open NEW terminal
+   python --version
+   nvim
+   :checkhealth provider
+   ```
+
+**Quick diagnostic:**
+```powershell
+# Check what Python commands are available:
+Get-Command py -ErrorAction SilentlyContinue
+Get-Command python -ErrorAction SilentlyContinue
+Get-Command python3 -ErrorAction SilentlyContinue
 ```
 
 ---
