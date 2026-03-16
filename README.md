@@ -106,13 +106,16 @@ Press `<leader>po` to open the **project picker** (cross-platform replacement fo
 
 ### Project Management
 - `<leader>po` - **Open project** (Telescope project picker)
-- `<leader>pf` - **Find files** in current project
+- `<leader>pf` - **Find files** (all files in current directory)
+- `<leader>pg` - **Git files** (only git-tracked files, git repos only)
 - `<leader>ps` - **Project search** (grep in files)
 - `<leader>pv` - **Project view** (netrw file explorer)
 
 ### Telescope (Fuzzy Finding)
-- `<C-p>` - Git files
-- `<leader>vh` - Help tags
+- `<C-p>` - **Smart find** (git files in repos, all files otherwise)
+- `<leader>vh` - **Help tags**
+
+**Note:** `<C-p>` automatically detects if you're in a git repository and shows git files (including untracked). If not in a git repo, it shows all files instead.
 
 ### Terminal Management
 - `<C-\>` - **Toggle floating terminal** (quick overlay)
