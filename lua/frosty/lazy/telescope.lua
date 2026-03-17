@@ -49,6 +49,14 @@ return {
 			builtin.grep_string({ search = vim.fn.input("Grep > ")})
 		end, { desc = "Project search" })
 		
+		-- Case-sensitive project search
+		vim.keymap.set('n', '<leader>pS', function()
+			builtin.grep_string({ 
+				search = vim.fn.input("Grep (case-sensitive) > "),
+				additional_args = function() return {"--case-sensitive"} end
+			})
+		end, { desc = "Project search (case-sensitive)" })
+		
 		-- Help tags
 		vim.keymap.set('n', '<leader>vh', builtin.help_tags, { desc = "Help tags" })
 		
