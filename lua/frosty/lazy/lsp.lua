@@ -84,35 +84,57 @@ return {
 			filetypes = { "vue" }
 		})
 
-		-- vtsls provides TypeScript language server with native React support
-		-- JSX/TSX works out-of-the-box (no plugin needed, unlike Vue)
-		vim.lsp.config("vtsls", {
+	-- vtsls provides TypeScript language server with native React support
+	-- JSX/TSX works out-of-the-box (no plugin needed, unlike Vue)
+	vim.lsp.config("vtsls", {
 
-			capabilities = capabilities,
-			filetypes = {
-				"javascript",
-				"javascriptreact",     -- React .jsx files
-				"javascript.jsx",
-				"typescript",
-				"typescriptreact",     -- React .tsx files (TypeScript + JSX)
-				"typescript.tsx",
-				"vue",                 -- Vue.js (via @vue/typescript-plugin)
-			},
-			settings = {
-				vtsls = {
-					tsserver = {
-						globalPlugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = vue_path,
-								languages = { "vue" },
-								configNamespace = "typescript",
-							},
-						}
+		capabilities = capabilities,
+		filetypes = {
+			"javascript",
+			"javascriptreact",     -- React .jsx files
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",     -- React .tsx files (TypeScript + JSX)
+			"typescript.tsx",
+			"vue",                 -- Vue.js (via @vue/typescript-plugin)
+		},
+		settings = {
+			vtsls = {
+				tsserver = {
+					globalPlugins = {
+						{
+							name = "@vue/typescript-plugin",
+							location = vue_path,
+							languages = { "vue" },
+							configNamespace = "typescript",
+						},
 					}
 				}
 			}
-		})
+		},
+		-- Dynamically load Effect language service plugin if found in project
+		on_new_config = function(new_config, new_root_dir)
+			local effect_path = vim.fs.joinpath(
+				new_root_dir,
+				"node_modules",
+				"@effect",
+				"language-service"
+			)
+			
+			if vim.fn.isdirectory(effect_path) == 1 then
+				-- Add Effect plugin when available in project node_modules
+				table.insert(
+					new_config.settings.vtsls.tsserver.globalPlugins,
+					{
+						name = "@effect/language-service",
+						location = effect_path,
+						languages = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+						enableForWorkspaceTypeScriptVersions = true,
+					}
+				)
+			end
+		end,
+	})
 
 		vim.lsp.config("tailwindcss", {
 			filetypes = {
