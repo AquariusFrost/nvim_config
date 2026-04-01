@@ -23,8 +23,8 @@ return {
             local ok, treesitter_configs = pcall(require, 'nvim-treesitter.configs')
             if not ok then
                 vim.notify(
-                    "Failed to load nvim-treesitter.configs. Try restarting Neovim.",
-                    vim.log.levels.WARN
+                    "Failed to load nvim-treesitter.configs:\n" .. treesitter_configs,
+                    vim.log.levels.ERROR
                 )
                 return
             end
