@@ -31,6 +31,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 -- Yank (copy) to system clipboard in normal & visual modes
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 
+-- Paste from system clipboard in normal & visual modes
+vim.keymap.set({"n", "v"}, "<leader>P", [["+p]], { desc = "Paste from system clipboard" })
+
 -- Yank entire line to system clipboard
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
@@ -75,4 +78,17 @@ end)
 vim.keymap.set("n", "<C-s>", function()
     vim.cmd("w")
 end)
+
+-- Copy diagnostic at cursor to system clipboard
+vim.keymap.set("n", "<leader>vy", function()
+    local diag = vim.diagnostic.get(vim.api.nvim_get_current_buf(), {
+        lnum = vim.fn.line(".") - 1,
+    })
+    if #diag > 0 then
+        vim.fn.setreg("+", diag[1].message)
+        vim.notify("Diagnostic copied to clipboard")
+    else
+        vim.notify("No diagnostic at cursor", vim.log.levels.WARN)
+    end
+end, { desc = "Copy diagnostic message to clipboard" })
 
