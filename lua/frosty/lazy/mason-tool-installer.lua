@@ -9,6 +9,9 @@ return {
             "prettierd",    -- Fast Prettier daemon for JS/TS/React/Vue
             "prettier",     -- Fallback if prettierd not available
             
+            -- Debuggers
+            "netcoredbg",   -- .NET Core Debugger (for C#/F#)
+
             -- Note: LSP servers (vtsls, eslint, etc.) are handled by mason-lspconfig
             -- This plugin only manages tools that aren't LSP servers
         },

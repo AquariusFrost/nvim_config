@@ -1,0 +1,1062 @@
+[
+  {
+    "ClassName": "WorkspaceController",
+    "Methods": [
+      {
+        "Name": "BuildAsync",
+        "RpcPath": "workspace/build",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceBuildRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "BuildSolutionAsync",
+        "RpcPath": "workspace/build-solution",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceBuildRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "CleanAsync",
+        "RpcPath": "workspace/clean",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceCleanRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "DebugAsync",
+        "RpcPath": "workspace/debug",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceDebugRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "DebugAttachAsync",
+        "RpcPath": "workspace/debug-attach",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceDebugAttachRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "PackAsync",
+        "RpcPath": "workspace/pack",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "NugetPackRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "PackAndPushAsync",
+        "RpcPath": "workspace/pack-and-push",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "NugetPackRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "RestoreAsync",
+        "RpcPath": "workspace/restore",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceRestoreRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "RunAsync",
+        "RpcPath": "workspace/run",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceRunRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "StopAsync",
+        "RpcPath": "workspace/stop",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceStopRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "TestAsync",
+        "RpcPath": "workspace/test",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceTestRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "TestSolutionAsync",
+        "RpcPath": "workspace/test-solution",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceTestRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "WatchAsync",
+        "RpcPath": "workspace/watch",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "WorkspaceWatchRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      }
+    ]
+  },
+  {
+    "ClassName": "UserSecretsController",
+    "Methods": [
+      {
+        "Name": "OpenSecrets",
+        "RpcPath": "user-secrets/open",
+        "Parameters": [
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      }
+    ]
+  },
+  {
+    "ClassName": "TestRunnerController",
+    "Methods": [
+      {
+        "Name": "CancelAsync",
+        "RpcPath": "testrunner/cancel",
+        "Parameters": [
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "DebugAsync",
+        "RpcPath": "testrunner/debug",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "NodeRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003COperationResult\u003E"
+      },
+      {
+        "Name": "GetBuildErrorsAsync",
+        "RpcPath": "testrunner/getBuildErrors",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "NodeRequest",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "GetResults",
+        "RpcPath": "testrunner/getResults",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "NodeRequest",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "GetResultsResult"
+      },
+      {
+        "Name": "InitializeAsync",
+        "RpcPath": "testrunner/initialize",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "InitializeRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CInitializeResult\u003E"
+      },
+      {
+        "Name": "InvalidateAsync",
+        "RpcPath": "testrunner/invalidate",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "NodeRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003COperationResult\u003E"
+      },
+      {
+        "Name": "GetNeotestBatchResults",
+        "RpcPath": "testrunner/neotestBatchResults",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "NeotestBatchResultsRequest",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Dictionary\u003Cstring, NeotestBatchResultDto\u003E"
+      },
+      {
+        "Name": "GetNeotestPositions",
+        "RpcPath": "testrunner/neotestPositions",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "NeotestPositionsRequest",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "List\u003CNeotestPositionDto\u003E"
+      },
+      {
+        "Name": "QuickDiscoverAsync",
+        "RpcPath": "testrunner/quickDiscover",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "InitializeRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "RunAsync",
+        "RpcPath": "testrunner/run",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "NodeRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003COperationResult\u003E"
+      },
+      {
+        "Name": "SyncFileAsync",
+        "RpcPath": "testrunner/syncFile",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "SyncFileRequest",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CSyncFileResult\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "SolutionManagementController",
+    "Methods": [
+      {
+        "Name": "AddProjectAsync",
+        "RpcPath": "solution/add-project",
+        "Parameters": [
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "RemoveProjectAsync",
+        "RpcPath": "solution/remove-project",
+        "Parameters": [
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      }
+    ]
+  },
+  {
+    "ClassName": "ProjectReferenceController",
+    "Methods": [
+      {
+        "Name": "AddAsync",
+        "RpcPath": "project/add-reference-interactive",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "ProjectReferenceRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "RemoveAsync",
+        "RpcPath": "project/remove-reference-interactive",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "ProjectReferenceRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      }
+    ]
+  },
+  {
+    "ClassName": "PickerController",
+    "Methods": [
+      {
+        "Name": "Preview",
+        "RpcPath": "picker/preview",
+        "Parameters": [
+          {
+            "Name": "guid",
+            "Type": "Guid",
+            "IsOptional": false
+          },
+          {
+            "Name": "itemId",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CPreviewResult\u003E"
+      },
+      {
+        "Name": "Query",
+        "RpcPath": "picker/query",
+        "Parameters": [
+          {
+            "Name": "guid",
+            "Type": "Guid",
+            "IsOptional": false
+          },
+          {
+            "Name": "query",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CPickerChoice[]\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "PackageManagerController",
+    "Methods": [
+      {
+        "Name": "AddPackageAsync",
+        "RpcPath": "nuget/add-package",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "AddPackageRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "RemovePackageAsync",
+        "RpcPath": "nuget/remove-package",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "RemovePackageRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      }
+    ]
+  },
+  {
+    "ClassName": "NewFileController",
+    "Methods": [
+      {
+        "Name": "JsonToCode",
+        "RpcPath": "json-code-gen-v2",
+        "Parameters": [
+          {
+            "Name": "jsonData",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "filePath",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "preferFileScopedNamespace",
+            "Type": "bool",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CBootstrapFileResultResponse\u003E"
+      },
+      {
+        "Name": "BootstrapFileNewFile",
+        "RpcPath": "new-file/bootstrap-file-v2",
+        "Parameters": [
+          {
+            "Name": "filePath",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "kind",
+            "Type": "Kind",
+            "IsOptional": false
+          },
+          {
+            "Name": "preferFileScopedNamespace",
+            "Type": "bool",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CBootstrapFileResultResponse\u003E"
+      },
+      {
+        "Name": "CreateItem",
+        "RpcPath": "new-file/create-item",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "CreateItemRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "JsonToCodeNewFile",
+        "RpcPath": "new-file/json-code-gen-v2",
+        "Parameters": [
+          {
+            "Name": "jsonData",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "filePath",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "preferFileScopedNamespace",
+            "Type": "bool",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CBootstrapFileResultResponse\u003E"
+      },
+      {
+        "Name": "BootstrapFile",
+        "RpcPath": "roslyn/bootstrap-file-v2",
+        "Parameters": [
+          {
+            "Name": "filePath",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "kind",
+            "Type": "Kind",
+            "IsOptional": false
+          },
+          {
+            "Name": "preferFileScopedNamespace",
+            "Type": "bool",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CBootstrapFileResultResponse\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "DiagnosticsController",
+    "Methods": [
+      {
+        "Name": "GetBuildServerDiagnosticsAsync",
+        "RpcPath": "diagnostics/buildserver",
+        "Parameters": [
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CBuildServerDiagnosticsResponse\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "ServerController",
+    "Methods": [
+      {
+        "Name": "LogDump",
+        "RpcPath": "_server/logdump",
+        "Parameters": [],
+        "ReturnType": "String[]"
+      },
+      {
+        "Name": "LogDumpAspire",
+        "RpcPath": "_server/logdump/aspire",
+        "Parameters": [
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CString[]\u003E"
+      },
+      {
+        "Name": "LogDumpBuildServer",
+        "RpcPath": "_server/logdump/buildserver",
+        "Parameters": [
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CString[]\u003E"
+      },
+      {
+        "Name": "SetLogLevel",
+        "RpcPath": "_server/setLogLevel",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "SetLogLevelRequest",
+            "IsOptional": false
+          },
+          {
+            "Name": "ct",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      }
+    ]
+  },
+  {
+    "ClassName": "EntityFrameworkController",
+    "Methods": [
+      {
+        "Name": "DropDatabase",
+        "RpcPath": "ef/database-drop",
+        "Parameters": [
+          {
+            "Name": "cancellationToken",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "UpdateDatabase",
+        "RpcPath": "ef/database-update",
+        "Parameters": [
+          {
+            "Name": "cancellationToken",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "AddMigration",
+        "RpcPath": "ef/migrations-add",
+        "Parameters": [
+          {
+            "Name": "migrationName",
+            "Type": "string",
+            "IsOptional": true
+          },
+          {
+            "Name": "cancellationToken",
+            "Type": "CancellationToken",
+            "IsOptional": true
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "ApplyMigration",
+        "RpcPath": "ef/migrations-apply",
+        "Parameters": [
+          {
+            "Name": "cancellationToken",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "ListMigrations",
+        "RpcPath": "ef/migrations-list",
+        "Parameters": [
+          {
+            "Name": "cancellationToken",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "RemoveMigration",
+        "RpcPath": "ef/migrations-remove",
+        "Parameters": [
+          {
+            "Name": "cancellationToken",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      }
+    ]
+  },
+  {
+    "ClassName": "TestController",
+    "Methods": [
+      {
+        "Name": "SetRunSettings",
+        "RpcPath": "test/set-project-run-settings",
+        "Parameters": [
+          {
+            "Name": "cancellationToken",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      }
+    ]
+  },
+  {
+    "ClassName": "TemplateController",
+    "Methods": [
+      {
+        "Name": "InvokeTemplate",
+        "RpcPath": "template/instantiate/v2",
+        "Parameters": [
+          {
+            "Name": "identity",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "name",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "outputPath",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "parameters",
+            "Type": "Dictionary\u003Cstring, string\u003E",
+            "IsOptional": false
+          },
+          {
+            "Name": "cancellationToken",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      },
+      {
+        "Name": "GetTemplates",
+        "RpcPath": "template/list",
+        "Parameters": [],
+        "ReturnType": "Task\u003CIAsyncEnumerable\u003CDotnetNewTemplateResponse\u003E\u003E"
+      },
+      {
+        "Name": "GetTemplateParameters",
+        "RpcPath": "template/parameters",
+        "Parameters": [
+          {
+            "Name": "identity",
+            "Type": "string",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CIAsyncEnumerable\u003CDotnetNewParameterResponse\u003E\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "SolutionController",
+    "Methods": [
+      {
+        "Name": "ListProjects",
+        "RpcPath": "solution/list-projects",
+        "Parameters": [
+          {
+            "Name": "solutionFilePath",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "cancellationToken",
+            "Type": "CancellationToken",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CList\u003CSolutionFileProjectResponse\u003E\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "RoslynController",
+    "Methods": [
+      {
+        "Name": "GetDiagnostics",
+        "RpcPath": "roslyn/get-workspace-diagnostics",
+        "Parameters": [
+          {
+            "Name": "targetPath",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "includeWarnings",
+            "Type": "bool",
+            "IsOptional": true
+          }
+        ],
+        "ReturnType": "IAsyncEnumerable\u003CDiagnosticMessage\u003E"
+      },
+      {
+        "Name": "GetVariablesFromScopes",
+        "RpcPath": "roslyn/scope-variables",
+        "Parameters": [
+          {
+            "Name": "sourceFilePath",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "lineNumber",
+            "Type": "int",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CIAsyncEnumerable\u003CVariableResultResponse\u003E\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "OutdatedController",
+    "Methods": [
+      {
+        "Name": "GetOutdatedPackages",
+        "RpcPath": "outdated/packages",
+        "Parameters": [
+          {
+            "Name": "targetPath",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "includeTransitive",
+            "Type": "bool?",
+            "IsOptional": true
+          }
+        ],
+        "ReturnType": "Task\u003CIAsyncEnumerable\u003COutdatedDependencyInfoResponse\u003E\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "NugetController",
+    "Methods": [
+      {
+        "Name": "GetPackageVersions",
+        "RpcPath": "nuget/get-package-versions",
+        "Parameters": [
+          {
+            "Name": "packageId",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "sources",
+            "Type": "List\u003Cstring\u003E",
+            "IsOptional": true
+          },
+          {
+            "Name": "includePrerelease",
+            "Type": "bool",
+            "IsOptional": true
+          }
+        ],
+        "ReturnType": "Task\u003CIAsyncEnumerable\u003Cstring\u003E\u003E"
+      },
+      {
+        "Name": "SearchPackages",
+        "RpcPath": "nuget/search-packages",
+        "Parameters": [
+          {
+            "Name": "searchTerm",
+            "Type": "string",
+            "IsOptional": false
+          },
+          {
+            "Name": "sources",
+            "Type": "List\u003Cstring\u003E",
+            "IsOptional": true
+          }
+        ],
+        "ReturnType": "Task\u003CIAsyncEnumerable\u003CNugetPackageMetadata\u003E\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "InitializeController",
+    "Methods": [
+      {
+        "Name": "Initialize",
+        "RpcPath": "initialize",
+        "Parameters": [
+          {
+            "Name": "request",
+            "Type": "InitializeRequest",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task\u003CInitializeResponse\u003E"
+      }
+    ]
+  },
+  {
+    "ClassName": "TerminalController",
+    "Methods": [
+      {
+        "Name": "ProcessExitedHandler",
+        "RpcPath": "processExited",
+        "Parameters": [
+          {
+            "Name": "jobId",
+            "Type": "Guid",
+            "IsOptional": false
+          },
+          {
+            "Name": "exitCode",
+            "Type": "int",
+            "IsOptional": false
+          }
+        ],
+        "ReturnType": "Task"
+      }
+    ]
+  }
+]

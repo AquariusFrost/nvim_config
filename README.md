@@ -5,7 +5,7 @@ Cross-platform Neovim config for Linux, Windows, and macOS with React and Vue.js
 ## Requirements
 
 ### All Platforms
-- **Neovim 0.10+** (for `vim.fs.joinpath()` API)
+- **Neovim 0.12+** (for `vim.fs.joinpath()` API and built-in LSP mappings)
 - **Git** (plugin management, Telescope)
 - **Node.js & npm** (LSP servers: vtsls, eslint, vue-language-server)
 - **Python 3** (LSP servers, optional)
@@ -41,6 +41,8 @@ Launch Neovim to auto-install plugins. Windows users: install Zig and Python (se
 
 
 ## Key Bindings
+
+For a full reference of all keybindings (built-in and custom), please see the [Keymaps Documentation](docs/keymaps/README.md).
 
 **Project:**
 - `<leader>po` - Project picker
