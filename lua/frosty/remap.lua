@@ -38,7 +38,7 @@ vim.keymap.set({"n", "v"}, "<leader>P", [["+p]], { desc = "Paste from system cli
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Delete to the void register (doesn't overwrite clipboard)
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({"n", "v"}, "<leader>D", [["_d]])
 
 -- Ctrl-c acts like Escape in insert mode
 vim.keymap.set("i", "<C-c>", "<Esc>")

@@ -52,7 +52,7 @@ return {
 				"tailwindcss",
 				"vue_ls",
 				"eslint",
-				"roslyn-language-server"			},
+			},
 			automatic_enable = true,
 		})
 
@@ -214,6 +214,16 @@ return {
 				{ name = 'buffer' },
 			})
 		})
+
+		-- Override the default hover handler to add a border and make it focusable
+		-- so you can press K twice to enter the float, scroll, and copy text.
+		-- (Using the modern handler override approach instead of the deprecated vim.lsp.with)
+		vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
+			config = config or {}
+			config.focusable = true
+			config.border = "rounded"
+			vim.lsp.handlers.hover(_, result, ctx, config)
+		end
 
 		vim.diagnostic.config({
 			virtual_text = {

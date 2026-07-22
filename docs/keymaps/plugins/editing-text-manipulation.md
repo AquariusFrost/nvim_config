@@ -19,8 +19,8 @@
 - [visual] <leader>y : Yank selected text to system clipboard (copy selection to OS clipboard for pasting in other applications)
 - [normal] <leader>Y : Yank entire current line to system clipboard (includes newline, quick way to copy full line to clipboard)
 - [visual] <leader>p : Paste over selection without overwriting clipboard (pastes but deletes to void register "_d, preserves clipboard for multiple pastes)
-- [normal] <leader>d : Delete to void register (black hole delete, doesn't affect any named registers or clipboard, true deletion)
-- [visual] <leader>d : Delete selected text to void register (removes text without polluting registers)
+- [normal] <leader>D : Delete to void register (black hole delete, doesn't affect any named registers or clipboard, true deletion)
+- [visual] <leader>D : Delete selected text to void register (removes text without polluting registers)
 
 #### Leader + s Prefix (Search & Replace)
 

@@ -13,3 +13,4 @@ This section has been split into individual plugin/category files in the `plugin
 - [Autocomplete (nvim-cmp)](plugins/autocomplete-nvim-cmp.md)
 - [.NET Development (easy-dotnet)](plugins/easy-dotnet.md)
 - [Testing (neotest)](plugins/neotest.md)
+- [Debugging (nvim-dap)](plugins/nvim-dap.md)

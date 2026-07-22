@@ -855,8 +855,8 @@ All `<leader>` mappings in this document refer to the Space key.
 - [visual] <leader>y : Yank selected text to system clipboard (copy selection to OS clipboard for pasting in other applications)
 - [normal] <leader>Y : Yank entire current line to system clipboard (includes newline, quick way to copy full line to clipboard)
 - [visual] <leader>p : Paste over selection without overwriting clipboard (pastes but deletes to void register "_d, preserves clipboard for multiple pastes)
-- [normal] <leader>d : Delete to void register (black hole delete, doesn't affect any named registers or clipboard, true deletion)
-- [visual] <leader>d : Delete selected text to void register (removes text without polluting registers)
+- [normal] <leader>D : Delete to void register (black hole delete, doesn't affect any named registers or clipboard, true deletion)
+- [visual] <leader>D : Delete selected text to void register (removes text without polluting registers)
 
 #### Leader + s Prefix (Search & Replace)
 
@@ -908,6 +908,22 @@ All `<leader>` mappings in this document refer to the Space key.
 - [insert] Ctrl-n : Select next completion item in popup menu (navigate down in suggestions list)
 - [insert] Ctrl-y : Confirm/accept selected completion item (inserts the selected suggestion into buffer, completes the text)
 - [insert] Ctrl-Space : Manually trigger completion menu (force show suggestions even if auto-trigger didn't activate, useful for seeing available completions)
+
+---
+
+### Debugging (nvim-dap)
+
+#### Debugger Operations
+
+- [normal] <leader>dc : Start/Continue debugging session
+- [normal] <leader>do : Step Over (step over the function call)
+- [normal] <leader>di : Step Into (step into the function call)
+- [normal] <leader>du : Step Out/Up (step out of the current function)
+- [normal] <leader>db : Toggle breakpoint at current line
+- [normal] <leader>dB : Set conditional breakpoint (prompts for condition)
+- [normal] <leader>dt : Terminate debugging session (Stop)
+- [normal] <leader>dr : Open debugger REPL (interactive debug console)
+- [normal] <leader>dl : Run last debugging session
 
 ---
 
