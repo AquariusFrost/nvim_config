@@ -29,7 +29,7 @@ return {
 				"github:Crashdummyy/mason-registry", -- Roslyn package
 			}
 		})
-		
+
 		-- Get Vue language server path (cross-platform)
 		-- Mason installs to stdpath("data")/mason on all platforms
 		local mason_path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason")
@@ -41,7 +41,7 @@ return {
 			"@vue",
 			"language-server"
 		)
-		
+
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"vtsls",
@@ -51,8 +51,8 @@ return {
 				"jdtls",
 				"tailwindcss",
 				"vue_ls",
-				"eslint"  -- React Hooks validation, Vue/JS/TS linting
-			},
+				"eslint",
+				"roslyn-language-server"			},
 			automatic_enable = true,
 		})
 
@@ -84,57 +84,57 @@ return {
 			filetypes = { "vue" }
 		})
 
-	-- vtsls provides TypeScript language server with native React support
-	-- JSX/TSX works out-of-the-box (no plugin needed, unlike Vue)
-	vim.lsp.config("vtsls", {
+		-- vtsls provides TypeScript language server with native React support
+		-- JSX/TSX works out-of-the-box (no plugin needed, unlike Vue)
+		vim.lsp.config("vtsls", {
 
-		capabilities = capabilities,
-		filetypes = {
-			"javascript",
-			"javascriptreact",     -- React .jsx files
-			"javascript.jsx",
-			"typescript",
-			"typescriptreact",     -- React .tsx files (TypeScript + JSX)
-			"typescript.tsx",
-			"vue",                 -- Vue.js (via @vue/typescript-plugin)
-		},
-		settings = {
-			vtsls = {
-				tsserver = {
-					globalPlugins = {
-						{
-							name = "@vue/typescript-plugin",
-							location = vue_path,
-							languages = { "vue" },
-							configNamespace = "typescript",
-						},
+			capabilities = capabilities,
+			filetypes = {
+				"javascript",
+				"javascriptreact", -- React .jsx files
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact", -- React .tsx files (TypeScript + JSX)
+				"typescript.tsx",
+				"vue", -- Vue.js (via @vue/typescript-plugin)
+			},
+			settings = {
+				vtsls = {
+					tsserver = {
+						globalPlugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = vue_path,
+								languages = { "vue" },
+								configNamespace = "typescript",
+							},
+						}
 					}
 				}
-			}
-		},
-		-- Dynamically load Effect language service plugin if found in project
-		on_new_config = function(new_config, new_root_dir)
-			local effect_path = vim.fs.joinpath(
-				new_root_dir,
-				"node_modules",
-				"@effect",
-				"language-service"
-			)
-			
-			if vim.fn.isdirectory(effect_path) == 1 then
-				-- Add Effect plugin when available in project node_modules
-				table.insert(
-					new_config.settings.vtsls.tsserver.globalPlugins,
-					{
-						name = "@effect/language-service",
-						location = effect_path,
-						languages = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-						enableForWorkspaceTypeScriptVersions = true,
-					}
+			},
+			-- Dynamically load Effect language service plugin if found in project
+			on_new_config = function(new_config, new_root_dir)
+				local effect_path = vim.fs.joinpath(
+					new_root_dir,
+					"node_modules",
+					"@effect",
+					"language-service"
 				)
-			end
-		end,
-	})
+
+				if vim.fn.isdirectory(effect_path) == 1 then
+					-- Add Effect plugin when available in project node_modules
+					table.insert(
+						new_config.settings.vtsls.tsserver.globalPlugins,
+						{
+							name = "@effect/language-service",
+							location = effect_path,
+							languages = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+							enableForWorkspaceTypeScriptVersions = true,
+						}
+					)
+				end
+			end,
+		})
 
 		vim.lsp.config("tailwindcss", {
 			filetypes = {
@@ -159,7 +159,7 @@ return {
 				"vue",
 			},
 			settings = {
-				format = false,  -- Prettier handles formatting, not ESLint
+				format = false, -- Prettier handles formatting, not ESLint
 				run = "onType",
 			},
 		})
@@ -169,12 +169,12 @@ return {
 		vim.api.nvim_create_user_command("EslintFixAll", function()
 			local bufnr = vim.api.nvim_get_current_buf()
 			local eslint_client = vim.lsp.get_clients({ bufnr = bufnr, name = "eslint" })[1]
-			
+
 			if not eslint_client then
 				vim.notify("ESLint LSP not attached to this buffer", vim.log.levels.WARN)
 				return
 			end
-			
+
 			eslint_client.request_sync("workspace/executeCommand", {
 				command = "eslint.applyAllFixes",
 				arguments = {
@@ -184,7 +184,7 @@ return {
 					},
 				},
 			}, nil, bufnr)
-			
+
 			vim.notify("ESLint fixes applied", vim.log.levels.INFO)
 		end, { desc = "Fix all ESLint problems for current buffer" })
 
