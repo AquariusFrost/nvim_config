@@ -23,7 +23,7 @@ autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
     callback = function()
-        vim.highlight.on_yank({
+        vim.hl.on_yank({
             higroup = 'IncSearch',
             timeout = 40,
         })
@@ -39,7 +39,7 @@ autocmd({"BufWritePre"}, {
 autocmd('LspAttach', {
     group = FrostyGroup,
     callback = function(e)
-        local opts = { buffer = e.buf }
+        local opts = { buf = e.buf }
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
         vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
         vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)

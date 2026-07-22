@@ -175,7 +175,7 @@ return {
 				return
 			end
 
-			eslint_client.request_sync("workspace/executeCommand", {
+			eslint_client:request_sync("workspace/executeCommand", {
 				command = "eslint.applyAllFixes",
 				arguments = {
 					{
